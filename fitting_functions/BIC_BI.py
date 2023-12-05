@@ -1,4 +1,4 @@
-def BIC_BI(rep_data=bi_rep_results):
+def BIC_BI(rep_data):
   
   starting_beta = np.random.uniform(1, 50)
   

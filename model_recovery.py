@@ -95,7 +95,7 @@ for i in range(n_reps):
     lowest_bic_index = np.where(bic_values == min_bic_value)[0][0]
 
 # update for result of fitting ACL reps
-    confusion_matrix[0,lowest_bic_index] = confusion_matrix[0,lowest_bic_index] + 1
+    confusion_matrix[1,lowest_bic_index] = confusion_matrix[1,lowest_bic_index] + 1
 
 
 confusion_matrix = confusion_matrix / n_reps 
