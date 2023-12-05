@@ -24,14 +24,15 @@ def ACL(Trials, alpha, beta, target_feature, phi_color, phi_shape, block_number)
     cf_color = []  # chosen shape (stimuli's color - 1,2,3)
     a = [] # choice
     r = [] #reward
-    v_shape = []
-    v_color = []
     rpe = []
     bandit_combo = []
     displayed_stim = []
     v_choice = []
+    trial = []
+    correct = []
     
     for i in range(Trials):
+        trial.append(i)
               # initialize all 18 possible stimulus combinations
         combo1 = value_df[(value_df["stimuli_num"] == 0) | (value_df["stimuli_num"] == 4) | (value_df["stimuli_num"] == 8)]
         combo2 = value_df[(value_df["stimuli_num"] == 0) | (value_df["stimuli_num"] == 5) | (value_df["stimuli_num"] == 7)]
@@ -85,10 +86,13 @@ def ACL(Trials, alpha, beta, target_feature, phi_color, phi_shape, block_number)
         
         if chosen_feature_shape == target_feature:
             mu = 0.80
+            correct.append(1)
         elif chosen_feature_color == target_feature:
             mu = 0.80
+            correct.append(1)
         else: 
             mu = 0.20
+            correct.append(0)
         
         reward = int(np.random.random(1)[0] < mu)
         r.append(reward)
@@ -119,7 +123,7 @@ def ACL(Trials, alpha, beta, target_feature, phi_color, phi_shape, block_number)
     phi_shape = [phi_shape] * 18 
     block = [block_number] * 18 
 
-    DF = pd.DataFrame(list(zip(block,alpha, target_feature, phi_color, phi_shape, a, r, cf_shape, cf_color, rpe, bandit_combo,displayed_stim)),
-               columns =['Block','alpha', 'target_feature','phi_color','phi_shape','a','r','cf_shape','cf_color','rpe','bandit_combo','displayed_stim'])
+    DF = pd.DataFrame(list(zip(block,trial,alpha, target_feature, phi_color, phi_shape, a, r, cf_shape, cf_color, rpe, bandit_combo,displayed_stim,correct)),
+               columns =['Block','trial','alpha', 'target_feature','phi_color','phi_shape','a','r','cf_shape','cf_color','rpe','bandit_combo','displayed_stim','correct'])
     
     return DF

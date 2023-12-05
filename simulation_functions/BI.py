@@ -25,10 +25,6 @@ def BI(Trials,beta,target_feature,block_number):
     cf_color = []
     a = []
     r = []
-    v_choice = []
-    v_chosen_shape = []
-    v_chosen_color = []
-    rpe = []
     bandit_combo = []
     displayed_stim = []
     p_yellow = []
@@ -37,10 +33,11 @@ def BI(Trials,beta,target_feature,block_number):
     p_square = []
     p_oval = []
     p_circle = []
+    trial = []
     
     
     for i in range(Trials):
-        
+        trial.append(i) # save trial number for plotting
         # initialize all 18 possible stimulus combinations
         combo1 = probability_df[(probability_df["stimuli_num"] == 0) | (probability_df["stimuli_num"] == 4) | (probability_df["stimuli_num"] == 8)]
         combo2 = probability_df[(probability_df["stimuli_num"] == 0) | (probability_df["stimuli_num"] == 5) | (probability_df["stimuli_num"] == 7)]
@@ -198,6 +195,6 @@ def BI(Trials,beta,target_feature,block_number):
     target_feature = [target_feature] * 18
     block = [block_number] * 18 
     
-    DF = pd.DataFrame(list(zip(block,target_feature,p_yellow,p_orange,p_blue,p_circle,p_square,p_oval,displayed_stim,a,r)),
-               columns =['Block','target_feature','p_yellow','p_orange','p_blue','p_circle','p_square','p_oval','displayed_stim','a','r'])
+    DF = pd.DataFrame(list(zip(block,trial,target_feature,p_yellow,p_orange,p_blue,p_circle,p_square,p_oval,displayed_stim,a,r)),
+               columns =['Block','trial','target_feature','p_yellow','p_orange','p_blue','p_circle','p_square','p_oval','displayed_stim','a','r'])
     return DF
