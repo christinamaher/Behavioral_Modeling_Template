@@ -1,5 +1,5 @@
 # Behavioral Modeling
-Repository for simulating, performing parameter/model recovery, and fitting for two exemplar behavioral models in Python: 
+Repository for simulating, performing parameter/model recovery, and fitting for two exemplar behavioral models in Python. This repo is relevant for Saez laboratory members/collaborators adapting behavioral models for sequential DM tasks: 
 1. **Attention at choice and learning model** =  Rescorla-Wagner variant that implements selective attention to relevant dimensions in a multidimensional state space. This model is based on [Leong & Radulescu et al (2017)]().
 2. **Bayesian inference model** = The Bayesian model uses probablistic inference to compute the probability distribution over the identity of the rewarding dimension and feature given all past trials in a multidimensional state space. This model is based on [Wilson & Niv (2012)]().
 
