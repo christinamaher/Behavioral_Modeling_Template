@@ -149,21 +149,6 @@ def BI(Trials,beta,target_feature,block_number):
             notchosen_shape2 = 0.80 * list(bandits_df["p_shape"])[non_chosen_index2]
             notchosen_color2 = 0.80 * list(bandits_df["p_color"])[non_chosen_index2]
         
-        x = chosen_shape
-        b = chosen_color
-        c = notchosen_shape1
-        d = notchosen_color1
-        e = notchosen_shape2
-        f = notchosen_color2
-        
-        # normalize 
-        chosen_shape = x / (x + b + c + d + e + f)
-        chosen_color = b / (x + b + c + d + e + f)
-        notchosen_shape1 = c / (x + b + c + d + e + f)
-        notchosen_color1 = d / (x + b + c + d + e + f)
-        notchosen_shape2 = e / (x + b + c + d + e + f)
-        notchosen_color2 = f / (x + b + c + d + e + f)
-    
         # Update dataframe 
         cf_shape_df = probability_df[(probability_df["f_shape"] == chosen_feature_shape)]
         cf_shape_index = list(cf_shape_df["stimuli_num"])

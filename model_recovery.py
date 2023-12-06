@@ -10,7 +10,7 @@ from simulation_functions.BI import BI
 from fitting_functions.loglikelihood_ACL import loglikelihood_ACL
 from fitting_functions.BIC_ACL import fit_ACL
 from fitting_functions.loglikelihood_BI import loglikelihood_BI
-from fitting_functions.fit_BI import fit_BI
+from fitting_functions.BIC_BI import fit_BI
 
 # Initialize confusion matrix 
 confusion_matrix = np.matrix('0 0; 0 0')
@@ -32,7 +32,7 @@ for i in range(n_reps):
     for i in range(n_blocks):
         bi_block_results = []
         tf = feature_list[target_feature_index]
-        bi_block_results =  bayesian_inference(Trials=18,beta=beta_test,target_feature=tf,block_number=block)        
+        bi_block_results =  BI(Trials=18,beta=beta_test,target_feature=tf,block_number=block)        
         target_feature_index = target_feature_index + 1 # move on to the next tf (6 total)
         block = block + 1
         bi_rep_results.append(bi_block_results) # save results of each block (6 total to a list)
